@@ -10,13 +10,19 @@ A multi-agent orchestration framework for Claude Code. Provides 15 specialized a
 
 **Drop-in portable.** Copy `.claude/` and this `CLAUDE.md` into any project root, run `/init`, start building.
 
+## On Every Session
+
+1. Check for `status.yaml` in project root
+2. If exists: read it, report status, continue from current phase
+3. If not exists: ask if user wants to initialize with `/init`
+
 ## Commands
 
-- `/init` - Initialize project (creates config.yaml, status.yaml, decisions.md)
-- `/plan "description"` - Create project plan from requirements
-- `/build` - Start or continue building (orchestrator delegates to agents)
-- `/build frontend` - Jump to specific agent
-- `/status` - Check current progress, blockers
+- `/init` - Initialize new project or scan existing (creates config.yaml, status.yaml, decisions.md)
+- `/plan "description"` - Create or show project plan from requirements
+- `/build` - Start/continue building (orchestrator decides agent)
+- `/build frontend` - Jump to specific agent (also: `backend`, `design`, `devops`)
+- `/status` - Show current progress, blockers
 - `/review` - Run code, security, accessibility, performance review
 - `/ship` - Final checks, launch checklist, deployment prep
 
@@ -47,7 +53,15 @@ Project state (created in your project root by /init):
 4. **Handoff** occurs when agent completes or needs different expertise
 5. **Quality gates** block phase transitions until standards met
 
-## Agent Roster (15)
+## Agent System
+
+15 specialized agents coordinate through the orchestrator:
+
+**Planning:** orchestrator, planner
+**Design:** ux-designer, copywriter
+**Development:** frontend, backend, devops
+**Quality:** tester, security, performance, accessibility, reviewer
+**Content:** content-writer, technical-writer, seo
 
 | Agent | Role | Writes Code? |
 |-------|------|-------------|
@@ -66,6 +80,8 @@ Project state (created in your project root by /init):
 | content-writer | Blog posts, marketing | Yes (content) |
 | technical-writer | Docs, READMEs | Yes (docs) |
 | seo | Meta tags, structured data | Yes |
+
+Agents read `config.yaml` for stack info and adapt to any framework.
 
 ## Project Templates
 
@@ -89,12 +105,15 @@ Project state (created in your project root by /init):
 
 ## Mandatory Quality Pipeline
 
-Every piece of code must pass:
-```
-Code Written -> Reviewer -> Refactor (if needed) -> Tester -> QA -> Done
-```
+After writing ANY code:
+1. Reviewer agent reviews (anti-slop, code quality, patterns)
+2. If issues found, refactor
+3. Tester agent writes/runs tests
+4. If tests fail, fix and re-test
+5. Final QA check
+6. ONLY THEN mark task complete
 
-Never skip this. Never mark code tasks as done without it.
+Never skip this pipeline. Never mark code tasks as done without it.
 
 ## Anti-Slop (Key Rules)
 
@@ -103,8 +122,15 @@ Never skip this. Never mark code tasks as done without it.
 - NO modals for editing (use inline editing), no "Are you sure?" (use undo toast)
 - EVERY stat needs context, EVERY chart needs a title, NO pie charts
 - Specific beats generic. Numbers beat adjectives.
+- Errors explain how to fix
 
 Full reference: `.claude/skills/project-system/references/anti-slop.md`
+
+## Reference Files
+
+Universal: anti-slop, copy-patterns, ux-patterns, testing, security, seo, content-strategy, docs-patterns, performance, accessibility, api-design, launch-checklist, project-templates
+
+Stack-specific (in references/stacks/): nextjs, supabase, tailwind, shadcn, typescript, vercel, resend, react-native, electron, stripe, prisma, docker, astro, vue
 
 ## Starting Work
 
