@@ -1,0 +1,128 @@
+# Mobile App Template
+#
+# React Native / Expo mobile application.
+# Used by /plan to scaffold project milestones.
+
+template: mobile-app
+description: Mobile application with React Native or Expo
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: react-native  # with Expo managed workflow
+    styling: nativewind       # or stylesheet, tamagui
+    components: null          # or native-base, react-native-paper
+    state: zustand            # or redux, jotai
+  backend:
+    runtime: node             # or python, go
+    framework: fastify        # or express, fastapi
+    database: postgres
+    orm: prisma
+  infrastructure:
+    hosting: fly.io           # or aws, railway (for API)
+    auth: clerk               # or firebase-auth, supabase-auth
+    storage: s3
+    push: expo-notifications  # or firebase-cloud-messaging
+    ci_cd: eas-build          # Expo Application Services
+
+# Project structure
+structure:
+  - app/                     # Expo Router screens
+  - components/
+  - hooks/
+  - lib/
+  - store/
+  - types/
+  - assets/
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - Tech stack decision
+      - Navigation structure
+      - Auth flow design
+      - API integration setup
+
+  - name: Design Complete
+    phase: design
+    tasks:
+      - Screen flows
+      - Component library
+      - Platform-specific patterns
+      - Gesture interactions
+
+  - name: Core Screens
+    phase: development
+    tasks:
+      - Authentication screens
+      - Main tab/stack navigation
+      - Core feature screens
+      - Data sync with API
+
+  - name: Features
+    phase: development
+    tasks:
+      - All screens implemented
+      - Push notifications
+      - Offline support
+      - Platform permissions (camera, location, etc.)
+
+  - name: Polish
+    phase: development
+    tasks:
+      - Animations and transitions
+      - Loading states
+      - Error handling
+      - Platform-specific adjustments
+
+  - name: Quality Assured
+    phase: testing
+    tasks:
+      - Unit tests (80%+)
+      - Integration tests
+      - Device testing (iOS + Android)
+      - Accessibility testing
+
+  - name: Ship Ready
+    phase: review
+    tasks:
+      - Security review
+      - App store assets (screenshots, descriptions)
+      - Beta testing (TestFlight / Play Console)
+      - App store submission
+
+# Quality defaults
+quality:
+  test_coverage: 80
+  accessibility: AA
+  performance:
+    startup_time: 2s
+    frame_rate: 60fps
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - ux-designer
+    - frontend
+    - backend
+    - tester
+    - security
+    - reviewer
+  optional:
+    - technical-writer
+    - devops
+    - accessibility
+
+# Mobile-specific considerations
+considerations:
+  - Platform guidelines (iOS HIG, Material Design)
+  - App store requirements and review process
+  - Deep linking / universal links
+  - Push notification strategy
+  - Offline-first data sync
+  - Device testing matrix (screen sizes, OS versions)
+  - Background tasks and battery optimization
+  - App size budget

@@ -1,0 +1,79 @@
+# config.yaml
+#
+# Project configuration. All agents read this.
+# Created by /init, updated by /plan.
+# Location: project root
+
+project:
+  name: ""
+  type: webapp  # webapp | saas | marketing-site | api | mobile-app | desktop-app
+  description: ""  # One sentence: what, for whom, why
+  url: ""          # Production URL (when deployed)
+  repo: ""         # Optional: github.com/user/repo
+
+# Tech stack — agents adapt to these choices
+stack:
+  frontend:
+    framework: ""     # next, react, vue, svelte, astro, react-native, electron, etc.
+    styling: ""       # tailwind, css-modules, styled-components, nativewind, etc.
+    components: ""    # shadcn, radix, headless-ui, native-base, etc.
+    state: ""         # zustand, redux, pinia, jotai, etc.
+  backend:
+    runtime: ""       # node, python, go, rust, etc.
+    framework: ""     # express, fastify, fastapi, gin, actix, etc.
+    database: ""      # postgres, mysql, mongodb, sqlite, etc.
+    orm: ""           # prisma, drizzle, sqlalchemy, gorm, etc.
+  infrastructure:
+    hosting: ""       # vercel, aws, fly.io, railway, cloudflare, etc.
+    auth: ""          # clerk, auth.js, supabase-auth, firebase-auth, custom, etc.
+    email: ""         # resend, sendgrid, ses, postmark, etc.
+    payments: ""      # stripe, lemonsqueezy, paddle, etc.
+    storage: ""       # s3, cloudflare-r2, supabase-storage, etc.
+    ci_cd: ""         # github-actions, gitlab-ci, circleci, etc.
+
+# Target audience — guides UX and copy decisions
+audience:
+  who: ""          # Specific user type (e.g., "Small business owners")
+  needs: ""        # What they're trying to accomplish
+  context: ""      # Device, environment, expertise level
+
+# Terminology — use these exact terms everywhere
+terminology:
+  - term: ""
+    meaning: ""
+    wrong: []  # Terms NOT to use
+
+# Brand voice — guides copy and content
+voice:
+  tone: professional  # professional | casual | friendly | technical
+  personality: ""     # 2-3 adjectives (e.g., "clear, helpful, direct")
+  examples:
+    good: []
+    bad: []
+
+# Quality targets
+quality:
+  test_coverage: 80     # Percentage
+  accessibility: AA     # A | AA | AAA
+  performance:
+    lcp: 2.5s           # Largest Contentful Paint
+    fid: 100ms          # First Input Delay
+    cls: 0.1            # Cumulative Layout Shift
+
+# Pages/screens in the app (helps with planning)
+pages: []
+  # Example:
+  # - route: "/"
+  #   purpose: "Landing/marketing"
+  #   auth: public
+  # - route: "/dashboard"
+  #   purpose: "Main view after login"
+  #   auth: required
+
+# Anti-slop overrides (if brand requires exceptions)
+# Uncomment only if you have specific brand requirements
+# anti_slop_exceptions:
+#   visual:
+#     - "Brand uses gradient in logo - allowed in header only"
+#   copy:
+#     - "Brand tagline is 'Powerful simplicity' - allowed in hero"

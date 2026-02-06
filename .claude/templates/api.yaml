@@ -1,0 +1,120 @@
+# API Service Template
+#
+# Backend API service without frontend.
+# Used by /plan to scaffold project milestones.
+
+template: api
+description: Backend API service without frontend
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: null
+    styling: null
+    components: null
+    state: null
+  backend:
+    runtime: node         # or python, go, rust
+    framework: fastify    # or express, fastapi, gin, actix
+    database: postgres    # or mysql, mongodb
+    orm: prisma           # or drizzle, sqlalchemy, gorm
+  infrastructure:
+    hosting: railway      # or fly.io, aws, render
+    auth: jwt             # or api-keys, oauth
+    storage: s3
+    ci_cd: github-actions
+
+# Project structure (Node.js)
+structure:
+  - src/routes/
+  - src/controllers/
+  - src/services/
+  - src/models/
+  - src/middleware/
+  - src/lib/
+  - src/types/
+  - src/config/
+  - tests/
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - API design (endpoints, response format)
+      - Database schema
+      - Auth strategy
+      - Documentation setup (OpenAPI)
+
+  - name: Core API
+    phase: development
+    tasks:
+      - Database setup
+      - Authentication
+      - Core CRUD endpoints
+      - Error handling
+
+  - name: Features
+    phase: development
+    tasks:
+      - All endpoints
+      - Business logic
+      - Validation
+      - Rate limiting
+
+  - name: Quality
+    phase: testing
+    tasks:
+      - Unit tests (90%+)
+      - Integration tests
+      - Load testing
+      - Security testing
+
+  - name: Ship Ready
+    phase: review
+    tasks:
+      - Security review
+      - API documentation
+      - Deployment prep
+      - Monitoring setup
+
+# Quality defaults (higher test coverage for APIs)
+quality:
+  test_coverage: 90
+  performance:
+    response_time_p95: 200ms
+    throughput: 1000rps
+  security:
+    auth_required: true
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - backend
+    - tester
+    - security
+    - technical-writer
+    - reviewer
+  optional:
+    - devops
+    - performance
+
+# API-specific considerations
+considerations:
+  - API versioning strategy
+  - Rate limiting rules
+  - Authentication method
+  - Documentation (OpenAPI)
+  - Error response format
+  - Pagination approach
+  - Webhooks (if needed)
+  - SDK generation
+
+# Documentation requirements
+documentation:
+  - OpenAPI/Swagger spec
+  - Authentication guide
+  - Rate limiting docs
+  - Error codes reference
+  - SDK usage examples

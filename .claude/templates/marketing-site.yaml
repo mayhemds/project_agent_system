@@ -1,0 +1,108 @@
+# Marketing Site Template
+#
+# Marketing website or landing pages.
+# Used by /plan to scaffold project milestones.
+
+template: marketing-site
+description: Marketing website or landing pages
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: astro      # or next for more dynamic needs
+    styling: tailwind
+    components: null      # or shadcn if using React islands
+    state: null           # Usually not needed
+  backend:
+    runtime: null         # Usually static
+    framework: null
+    database: null
+    orm: null
+  infrastructure:
+    hosting: vercel       # or cloudflare, netlify
+    auth: null
+    storage: null
+    ci_cd: github-actions
+
+# Project structure
+structure:
+  - src/pages/
+  - src/components/
+  - src/layouts/
+  - src/content/
+  - src/styles/
+  - public/
+  - public/images/
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - Content strategy
+      - Site structure
+      - SEO planning
+
+  - name: Design Complete
+    phase: design
+    tasks:
+      - Page wireframes
+      - Visual design
+      - Responsive layouts
+
+  - name: Content Ready
+    phase: design
+    tasks:
+      - Copy written
+      - Images sourced
+      - SEO metadata
+
+  - name: Site Built
+    phase: development
+    tasks:
+      - All pages implemented
+      - Animations/interactions
+      - Forms integrated
+
+  - name: Launch Ready
+    phase: review
+    tasks:
+      - Performance optimized
+      - SEO verified
+      - Cross-browser tested
+      - Accessibility checked
+
+# Quality defaults (stricter performance for marketing)
+quality:
+  test_coverage: 50
+  accessibility: AA
+  performance:
+    lcp: 1.5s             # Faster target for marketing
+    inp: 100ms
+    cls: 0.05
+  seo:
+    lighthouse_seo: 95
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - ux-designer
+    - frontend
+    - content-writer
+    - copywriter
+    - seo
+    - reviewer
+  optional:
+    - technical-writer
+    - security
+    - performance
+    - accessibility
+
+# Special focus
+focus:
+  - Conversion optimization
+  - Page speed
+  - SEO
+  - Visual impact
+  - Mobile experience

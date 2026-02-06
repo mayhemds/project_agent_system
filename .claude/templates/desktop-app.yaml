@@ -1,0 +1,128 @@
+# Desktop App Template
+#
+# Electron or Tauri desktop application.
+# Used by /plan to scaffold project milestones.
+
+template: desktop-app
+description: Desktop application with Electron or Tauri
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: electron      # or tauri
+    styling: tailwind        # or css-modules
+    components: shadcn       # or radix
+    state: zustand           # or redux
+  backend:
+    runtime: node            # Main process (Electron) or Rust (Tauri)
+    framework: null
+    database: sqlite         # or postgres for server-backed
+    orm: prisma              # or better-sqlite3
+  infrastructure:
+    hosting: null            # Desktop apps are local
+    auth: null               # or custom auth for cloud features
+    storage: local           # File system
+    ci_cd: github-actions
+    distribution: electron-builder  # or tauri-bundler
+
+# Project structure (Electron)
+structure:
+  - src/main/               # Main process
+  - src/renderer/            # Renderer process (UI)
+  - src/preload/             # Preload scripts
+  - src/shared/              # Shared types/utils
+  - resources/               # App icons, assets
+  - build/                   # Build configuration
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - Tech stack decision (Electron vs Tauri)
+      - Main/renderer architecture
+      - Auto-update setup
+      - Packaging pipeline
+
+  - name: Design Complete
+    phase: design
+    tasks:
+      - Window layout
+      - Menu structure
+      - System tray integration
+      - Keyboard shortcuts
+
+  - name: Core Features
+    phase: development
+    tasks:
+      - Main functionality
+      - File system access
+      - IPC communication
+      - Native integrations
+
+  - name: Features
+    phase: development
+    tasks:
+      - All features implemented
+      - Cross-platform testing (Mac/Win/Linux)
+      - Auto-update flow
+      - System integration (file associations, protocols)
+
+  - name: Polish
+    phase: development
+    tasks:
+      - Performance optimization
+      - Memory management
+      - Error handling
+      - Native feel (platform conventions)
+
+  - name: Quality Assured
+    phase: testing
+    tasks:
+      - Unit tests (80%+)
+      - Integration tests
+      - Cross-platform verification
+      - Accessibility testing
+
+  - name: Ship Ready
+    phase: review
+    tasks:
+      - Security review (process isolation)
+      - Code signing (Mac/Win)
+      - Installer/DMG generation
+      - Auto-update server
+      - Distribution plan
+
+# Quality defaults
+quality:
+  test_coverage: 80
+  accessibility: AA
+  performance:
+    startup_time: 3s
+    memory_budget: 200MB
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - ux-designer
+    - frontend
+    - tester
+    - security
+    - reviewer
+  optional:
+    - backend
+    - technical-writer
+    - devops
+    - performance
+
+# Desktop-specific considerations
+considerations:
+  - Code signing certificates (Apple Developer, Windows Authenticode)
+  - Auto-update strategy (electron-updater, Sparkle)
+  - Cross-platform UI differences (Mac/Win/Linux)
+  - Native menu integration
+  - File association handling
+  - Security (context isolation, sandbox, no nodeIntegration)
+  - Crash reporting
+  - Offline-first architecture

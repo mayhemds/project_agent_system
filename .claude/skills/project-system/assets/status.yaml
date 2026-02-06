@@ -1,0 +1,58 @@
+# status.yaml
+#
+# Source of truth for project progress.
+# Claude reads and updates this every session.
+# Created by /init, updated throughout the project.
+# Location: project root
+
+project:
+  name: ""
+  description: ""
+  started: ""      # YYYY-MM-DD
+
+# Current state
+phase: not_started  # not_started | planning | design | development | testing | review | shipping
+active_agent: null  # Which agent is currently working
+progress: 0         # Overall percentage
+
+# Milestones (populated by /plan based on project template)
+milestones: []
+  # Example:
+  # - name: "Foundation"
+  #   status: not_started  # not_started | in_progress | complete
+  #   tasks:
+  #     - name: "Project setup"
+  #       status: not_started
+  #       assigned_to: ""  # frontend | backend | devops | etc.
+  #       files_created: []
+  #       files_modified: []
+  #       notes: ""
+
+# Blockers
+blockers: []
+  # Example:
+  # - description: "Waiting for API keys"
+  #   severity: high  # critical | high | medium | low
+  #   since: "2025-01-15"
+
+# Quality tracking
+quality:
+  last_review: null      # YYYY-MM-DD
+  review_passed: false
+  test_coverage: 0       # Percentage
+  open_issues:
+    critical: 0
+    high: 0
+    medium: 0
+    low: 0
+
+# Recent activity (last 10 entries)
+recent_activity: []
+  # Example:
+  # - date: "2025-01-15"
+  #   agent: "frontend"
+  #   action: "Created dashboard layout"
+
+# Session tracking
+last_session: ""  # YYYY-MM-DD
+sessions: 0       # Total sessions

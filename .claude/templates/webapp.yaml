@@ -1,0 +1,104 @@
+# Web Application Template
+#
+# Standard web application with user interface and backend.
+# Used by /plan to scaffold project milestones.
+
+template: webapp
+description: Standard web application with user interface and backend
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: next       # or react, vue, svelte, astro
+    styling: tailwind     # or css-modules, styled-components
+    components: shadcn    # or radix, headless-ui
+    state: zustand        # or redux, jotai, pinia
+  backend:
+    runtime: node         # or python, go
+    framework: built-in   # Next.js API routes, or express, fastify
+    database: postgres    # or mysql, sqlite, mongodb
+    orm: prisma           # or drizzle, sqlalchemy
+  infrastructure:
+    hosting: vercel       # or aws, fly.io, railway
+    auth: auth.js         # or clerk, supabase-auth
+    storage: null
+    ci_cd: github-actions
+
+# Project structure (adapt to framework)
+structure:
+  - src/app/
+  - src/components/ui/
+  - src/components/features/
+  - src/lib/
+  - src/hooks/
+  - src/types/
+  - public/
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - Tech stack decision
+      - Project setup
+      - Database schema
+
+  - name: Design Complete
+    phase: design
+    tasks:
+      - Wireframes
+      - Component specs
+      - Design tokens
+
+  - name: Core Features
+    phase: development
+    tasks:
+      - Authentication
+      - Main UI components
+      - Core functionality
+
+  - name: Feature Complete
+    phase: development
+    tasks:
+      - All features implemented
+      - Error handling
+      - Edge cases
+
+  - name: Quality Assured
+    phase: testing
+    tasks:
+      - Unit tests (80%+)
+      - Integration tests
+      - E2E for critical paths
+
+  - name: Ship Ready
+    phase: review
+    tasks:
+      - Security review
+      - Accessibility review
+      - Documentation
+      - Deployment prep
+
+# Quality defaults
+quality:
+  test_coverage: 80
+  accessibility: AA
+  performance:
+    lcp: 2.5s
+    inp: 200ms
+    cls: 0.1
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - ux-designer
+    - frontend
+    - tester
+    - security
+    - reviewer
+  optional:
+    - backend
+    - technical-writer
+    - content-writer
+    - devops

@@ -1,0 +1,132 @@
+# SaaS Application Template
+#
+# Software as a Service with auth, billing, and user management.
+# Used by /plan to scaffold project milestones.
+
+template: saas
+description: SaaS product with authentication, billing, and user management
+
+# Suggested stack (override in config.yaml)
+stack:
+  frontend:
+    framework: next
+    styling: tailwind
+    components: shadcn
+    state: zustand
+  backend:
+    runtime: node
+    framework: built-in   # or trpc
+    database: postgres
+    orm: prisma
+  infrastructure:
+    hosting: vercel
+    auth: clerk           # or auth.js, supabase-auth
+    storage: s3           # or cloudflare-r2
+    email: resend
+    payments: stripe
+    ci_cd: github-actions
+
+# Project structure
+structure:
+  - src/app/(marketing)/
+  - src/app/(app)/
+  - src/app/api/
+  - src/components/ui/
+  - src/components/features/
+  - src/lib/
+  - src/hooks/
+  - src/types/
+
+# Milestones
+milestones:
+  - name: Foundation
+    phase: planning
+    tasks:
+      - Tech stack decision
+      - Database schema
+      - Auth strategy
+      - Billing model
+
+  - name: Design Complete
+    phase: design
+    tasks:
+      - Marketing pages
+      - App wireframes
+      - Component system
+      - User flows
+
+  - name: Auth and Core
+    phase: development
+    tasks:
+      - Authentication
+      - User management
+      - Core data models
+      - Basic dashboard
+
+  - name: Features
+    phase: development
+    tasks:
+      - Main product features
+      - Settings pages
+      - Notifications
+
+  - name: Billing
+    phase: development
+    tasks:
+      - Payment integration
+      - Subscription management
+      - Usage tracking
+      - Invoicing
+
+  - name: Quality Assured
+    phase: testing
+    tasks:
+      - Unit tests (85%+)
+      - Integration tests
+      - E2E for critical paths
+      - Payment flow testing
+
+  - name: Ship Ready
+    phase: review
+    tasks:
+      - Security review
+      - Compliance check
+      - Documentation
+      - Deployment prep
+
+# Quality defaults
+quality:
+  test_coverage: 85
+  accessibility: AA
+  performance:
+    lcp: 2.5s
+    inp: 200ms
+    cls: 0.1
+  security:
+    auth_required: true
+    data_sensitivity: confidential
+
+# Agents to use
+agents:
+  required:
+    - planner
+    - ux-designer
+    - frontend
+    - backend
+    - tester
+    - security
+    - technical-writer
+    - reviewer
+  optional:
+    - content-writer
+    - devops
+    - performance
+
+# Special considerations
+considerations:
+  - User onboarding flow
+  - Subscription tiers
+  - Team/organization support
+  - Data export
+  - GDPR compliance
+  - Audit logging
