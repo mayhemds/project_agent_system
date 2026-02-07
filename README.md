@@ -1,6 +1,6 @@
-# Project Agent System
+# Shipline
 
-By **Tyrone May**
+By **Mayhemds**
 
 A multi-agent orchestration framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). 15 specialized AI agents coordinate to plan, design, build, test, review, and ship software projects — with persistent state across sessions and a mandatory quality pipeline that prevents AI-generated garbage from reaching production.
 
