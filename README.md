@@ -2,7 +2,7 @@
 
 By **Mayhemds**
 
-A multi-agent orchestration framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). 15 specialized AI agents coordinate to plan, design, build, test, review, and ship software projects — with persistent state across sessions and a mandatory quality pipeline that prevents AI-generated garbage from reaching production.
+A multi-agent orchestration framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). 15 specialised AI agents coordinate to plan, design, build, test, review, and ship software projects, with persistent state across sessions and a mandatory quality pipeline that prevents AI-generated garbage from reaching production.
 
 **Framework-agnostic.** Works with Next.js, React Native, Electron, Astro, Vue, FastAPI, Go, or any other stack. Agents adapt based on your `config.yaml`.
 
@@ -90,7 +90,7 @@ With this system, you get **15 specialized agents** that:
 
 - **Hand off work to each other.** The Planner creates a plan, hands off to the UX Designer, who creates wireframes and hands off to the Frontend agent, who writes code and hands off to the Reviewer.
 
-- **Persist state across sessions.** Close Claude Code, come back tomorrow, run `/build` — it reads `status.yaml` and picks up exactly where you left off.
+- **Persist state across sessions.** Close Claude Code, come back tomorrow, and run `/build`. It reads `status.yaml` and picks up exactly where you left off.
 
 - **Enforce quality automatically.** Every piece of code goes through a mandatory pipeline: code is reviewed for anti-slop compliance, refactored if needed, tested, and QA'd before being marked complete. You can't skip this.
 
@@ -104,7 +104,7 @@ With this system, you get **15 specialized agents** that:
 
 Here's what a real session flow looks like, from zero to shipped product. Each section below represents a separate Claude Code session (you can close and reopen between any of them).
 
-### Session 1: Initialize and Plan
+### Session 1: Initialise and Plan
 
 ```
 You: /init
@@ -131,7 +131,7 @@ Claude: 5. Any decisions already made?
 You: I want to use Next.js and Supabase
 
 Claude (Orchestrator):
-  Project initialized. Created:
+  Project initialised. Created:
   - config.yaml (Next.js + Supabase + Tailwind stack)
   - status.yaml (Phase: not_started)
   - decisions.md
@@ -199,7 +199,7 @@ Claude (Orchestrator):
   ## Current Status
   Phase: planning → advancing to design
   Progress: 10%
-  All planning tasks complete. Activating UX Designer.
+  All planning tasks are complete. Activating UX Designer.
 
 Claude (UX Designer):
   ## Dashboard Layout (Freelancer View)
@@ -379,7 +379,7 @@ Every time you run `/build`, the same loop executes:
 1. Orchestrator reads status.yaml
 2. Determines current phase and next agent
 3. Activates the agent with context (stack, files, constraints)
-4. Agent performs specialized work
+4. Agent performs specialised work
 5. If code was written → quality pipeline runs (review → test → QA)
 6. Status.yaml is updated
 7. Orchestrator determines next step (continue, hand off, or complete)
@@ -429,14 +429,14 @@ handoff:
 
 | Agent | What It Does |
 |-------|-------------|
-| **Orchestrator** | The coordinator. Reads status, routes to agents, manages handoffs, enforces quality gates. Never writes code. |
+| **Orchestrator** | The coordinator. Reads status, routes to agents, manages handoffs, and enforces quality gates. Never writes code. |
 | **Planner** | Gathers requirements, selects tech stack, defines milestones, creates architecture. Active during `/plan` and the planning phase. |
 
 ### Design Agents
 
 | Agent | What It Does |
 |-------|-------------|
-| **UX Designer** | Creates wireframes, user flows, component specs, interaction patterns. Decides layout and information hierarchy. Does not write code — writes specs that the Frontend agent implements. |
+| **UX Designer** | Creates wireframes, user flows, component specs, and interaction patterns. Decides layout and information hierarchy. Does not write code — writes specs that the Frontend agent implements. |
 | **Copywriter** | Writes UI text: headlines, button labels, form labels, error messages, empty states, success messages. Follows anti-slop copy rules (no buzzwords, specific language). |
 
 ### Development Agents
@@ -444,7 +444,7 @@ handoff:
 | Agent | What It Does |
 |-------|-------------|
 | **Frontend** | Implements UI: components, pages, styling, client-side interactions, state management. Reads stack references for framework-specific patterns (Next.js, React Native, Vue, etc.). |
-| **Backend** | Implements server-side: APIs, database schema, authentication, authorization, webhooks, email, background jobs. Reads stack references for database/ORM patterns. |
+| **Backend** | Implements server-side: APIs, database schema, authentication, authorisation, webhooks, email, background jobs. Reads stack references for database/ORM patterns. |
 | **DevOps** | Infrastructure: CI/CD pipelines, Docker configs, deployment, environment management, monitoring, hosting configuration. |
 
 ### Quality Agents
@@ -453,7 +453,7 @@ handoff:
 |-------|-------------|-----------------|
 | **Tester** | Writes and runs unit, integration, and E2E tests. Reports coverage. | Yes (test files) |
 | **Security** | OWASP Top 10 review, auth audit, dependency check, data handling review. | No (read-only) |
-| **Performance** | Core Web Vitals audit, bundle analysis, caching review, database query optimization. | No (read-only) |
+| **Performance** | Core Web Vitals audit, bundle analysis, caching review, database query optimisation. | No (read-only) |
 | **Accessibility** | WCAG-AA compliance, ARIA patterns, keyboard navigation, screen reader testing. | No (read-only) |
 | **Reviewer** | Code quality review, anti-slop compliance check, final QA sign-off. The gatekeeper. | No (read-only) |
 
@@ -493,7 +493,7 @@ Code Written → Reviewer → Refactor (if needed) → Tester → QA → Done
 
 ### Why This Matters
 
-Without this pipeline, AI-generated code tends to work but be mediocre: inconsistent patterns, missing edge cases, poor error messages, unnecessary complexity. The pipeline catches these issues before they accumulate.
+Without this pipeline, AI-generated code tends to work but be mediocre: inconsistent patterns, missing edge cases, poor error messages, and unnecessary complexity. The pipeline catches these issues before they accumulate.
 
 The Orchestrator enforces this — it won't mark a task complete until the pipeline passes. You can't skip it.
 
@@ -507,7 +507,7 @@ The Orchestrator enforces this — it won't mark a task complete until the pipel
 
 | AI Default | Our Standard |
 |-----------|-------------|
-| Gradient backgrounds everywhere | Solid colors: `bg-background`, `bg-card`, `bg-muted` |
+| Gradient backgrounds everywhere | Solid colours: `bg-background`, `bg-card`, `bg-muted` |
 | Shadows on every element | Shadows only for elevation: dropdowns, modals |
 | Icons inside colored circles | Icons inline, no decorative containers |
 | `rounded-2xl` on everything | One consistent radius: `rounded-md` or `rounded-lg` |
@@ -579,7 +579,7 @@ Agents consult reference files for domain-specific knowledge. There are two type
 | `ux-patterns.md` | Component selection, layout patterns, responsive design, mobile patterns |
 | `testing.md` | Test pyramid, coverage targets, naming conventions, mock rules |
 | `security.md` | OWASP Top 10, auth patterns, input validation, security headers |
-| `performance.md` | Core Web Vitals targets, bundle optimization, caching strategies, database tuning |
+| `performance.md` | Core Web Vitals targets, bundle optimisation, caching strategies, database tuning |
 | `accessibility.md` | WCAG-AA/AAA, ARIA patterns, keyboard nav, screen reader support |
 | `api-design.md` | REST conventions, response formats, pagination, versioning, rate limiting |
 | `seo.md` | Meta tags, structured data, sitemap, Open Graph, llms.txt |
@@ -592,7 +592,7 @@ Agents consult reference files for domain-specific knowledge. There are two type
 
 | Stack | What's In It |
 |-------|-------------|
-| `nextjs.md` | App Router, server/client components, layouts, metadata, server actions, image optimization |
+| `nextjs.md` | App Router, server/client components, layouts, metadata, server actions, image optimisation |
 | `supabase.md` | Auth, RLS policies, database queries, storage, realtime, edge functions |
 | `tailwind.md` | Utility patterns, responsive breakpoints, dark mode, animation, common pitfalls |
 | `shadcn.md` | Component usage, theming, forms with react-hook-form + Zod, data tables |
@@ -604,7 +604,7 @@ Agents consult reference files for domain-specific knowledge. There are two type
 | `stripe.md` | Checkout, subscriptions, webhooks, customer portal, Payment Intents |
 | `prisma.md` | Schema, migrations, queries, transactions, middleware, seeding |
 | `docker.md` | Multi-stage Dockerfiles, Compose, networks, health checks, production checklist |
-| `astro.md` | Content collections, islands architecture, SSG/SSR, image optimization |
+| `astro.md` | Content collections, islands architecture, SSG/SSR, image optimisation |
 | `vue.md` | Composition API, Pinia, Vue Router, Nuxt.js, composables |
 
 Agents automatically load the relevant stack references based on what's in your `config.yaml`. If your config says `framework: next`, the Frontend agent reads `nextjs.md`. If it says `database: postgres` with `orm: prisma`, the Backend agent reads `prisma.md`.
@@ -840,7 +840,7 @@ You can also add your own stack reference by creating a file in `.claude/skills/
 
 This is a **workflow system**, not just rules. Most AI coding setups give you a static set of instructions. This gives you:
 - Persistent state across sessions (status.yaml)
-- Specialized agents that hand off work to each other
+- Specialised agents that hand off work to each other
 - A mandatory quality pipeline that can't be skipped
 - Phase-based project management with quality gates
 - 860 lines of anti-slop rules tested against real AI output
